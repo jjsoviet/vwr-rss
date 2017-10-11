@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'VWR';
+  message = 'This is an RSS app designed to help learn Angular.'
 }
