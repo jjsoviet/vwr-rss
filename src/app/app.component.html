@@ -1,4 +1,16 @@
 <div class="container">
   <h1>{{title}}</h1>
   <h4>{{message}}</h4>
+
+  <div class="object-container">
+    <h2>{{object1.title}}</h2>
+    <h4>{{object1.desc}}</h4>
+    <h4>{{object1.num}}</h4>
+  </div>
+
+  <div class="object-container">
+    <h2>{{object2.title}}</h2>
+    <input [(ngModel)]="object2.desc" placeholder="description" />
+    <h4>{{object2.num}}</h4>
+  </div>
 </div>
