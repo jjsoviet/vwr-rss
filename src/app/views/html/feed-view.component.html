@@ -1,0 +1,12 @@
+<div class="main-container">
+  <div class="feed-container">
+    <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item">
+      <img class="feed-img" src="{{feed.img}}" />
+      <div class="feed-info">
+        <h3>{{feed.title}}</h3>
+        <span>{{feed.content}}</span>
+        <a>{{feed.link}}</a>
+      </div>
+    </div>
+  </div>
+</div>

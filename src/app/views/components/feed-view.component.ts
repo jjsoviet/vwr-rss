@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { SampleObject } from './sampleobject';
-import { ObjectService } from './object.service';
-import { Feed } from './data/feed';
-import { RssService } from './services/rss.service';
+import { Feed } from '../../data/feed';
+import { RssService } from '../../services/rss.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'feedview',
+  templateUrl: '../html/feed-view.component.html',
+  styleUrls: ['../css/styles.css']
 })
 
-export class AppComponent implements OnInit {
+export class FeedViewComponent implements OnInit {
   //Constructor
   constructor(private rssService: RssService) { }
 

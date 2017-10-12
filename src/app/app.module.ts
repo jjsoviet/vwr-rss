@@ -3,20 +3,25 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // Components to be declared and used
-import { AppComponent } from './app.component';
-import { ObjectDetailComponent } from './object-detail.component';
-import { ObjectService } from './object.service';
+import { NavbarComponent } from './views/components/navbar.component';
+import { FeedViewComponent } from './views/components/feed-view.component';
+import { RssService } from './services/rss.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ObjectDetailComponent
+    NavbarComponent,
+    FeedViewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [ObjectService],
-  bootstrap: [AppComponent]
+  providers: [
+    RssService
+  ],
+  bootstrap: [
+    NavbarComponent,
+    FeedViewComponent
+  ]
 })
 export class AppModule { }

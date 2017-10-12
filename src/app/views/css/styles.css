@@ -1,0 +1,68 @@
+/*Navbar Styles*/
+.navbar-fixed {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  padding: 10px;
+  background: #333;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar-nav a {
+  color: #FFF;
+}
+
+.navbar-title {
+  font-size: 1.5em;
+  float: right;
+}
+
+/*Main View Styles*/
+.main-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+}
+
+
+/*RSS Feed Item Styles*/
+.feed-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #EEE;
+}
+
+.feed-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 5px;
+}

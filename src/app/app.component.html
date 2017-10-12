@@ -1,15 +1,12 @@
-<div class="container">
-  <h1>{{title}}</h1>
-  <h4>{{message}}</h4>
-
-  <!--Object Detail Display Block-->
-  <object-detail [object]="selectedObject"></object-detail>
-
-  <div class="object-container">
-    <ul class="object-list">
-      <li *ngFor="let object of objects" [class.selected]="object === selectedObject" (click)="displayInfo(object)">
-        <span class="object-title">{{object.title}}:</span><span class="object-desc">{{object.num}}</span>
-      </li>
-    </ul>
+<div class="main-container">
+  <div class="rss-container">
+    <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="rss-item">
+      <img class="rss-img" src="{{feed.img}}" />
+      <div class="rss-info">
+        <h3>{{feed.title}}</h3>
+        <span>{{feed.content}}</span>
+        <a>{{feed.link}}</a>
+      </div>
+    </div>
   </div>
 </div>
