@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { SampleObject } from './sampleobject';
-
-const OBJECTS: SampleObject[] = [
-  { title: 'object 1', desc: 'this is object 1', num: 3342 },
-  { title: 'object 2', desc: 'this is object 2', num: 4553 },
-  { title: 'object 3', desc: 'this is object 3', num: 8643 },
-  { title: 'object 4', desc: 'this is object 4', num: 2249 },
-  { title: 'object 5', desc: 'this is object 5', num: 8954 }
-];
+import { ObjectService } from './object.service';
 
 @Component({
   selector: 'app-root',
@@ -15,17 +9,29 @@ const OBJECTS: SampleObject[] = [
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  //Constructor
+  constructor(private objectService: ObjectService) { }
+
+  //Interface implementation
+  ngOnInit(): void {
+    this.getObjects();
+  }
+
   //Static Messages
   title = 'VWR';
   message = 'This is an RSS app designed to help learn Angular.';
 
   //Objects for data binding
-  objects = OBJECTS;
+  objects: SampleObject[];
   selectedObject: SampleObject;
 
   //Functions
   displayInfo(object: SampleObject): void {
     this.selectedObject = object;
+  }
+
+  getObjects(): void {
+    this.objectService.getObjects().then(objects => this.objects = objects);
   }
 }

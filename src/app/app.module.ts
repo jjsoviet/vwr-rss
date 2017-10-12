@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 // Components to be declared and used
 import { AppComponent } from './app.component';
 import { ObjectDetailComponent } from './object-detail.component';
+import { ObjectService } from './object.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { ObjectDetailComponent } from './object-detail.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ObjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
