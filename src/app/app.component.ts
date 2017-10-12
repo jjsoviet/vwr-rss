@@ -25,18 +25,13 @@ export class AppComponent {
   //Static Messages
   title = 'VWR';
   message = 'This is an RSS app designed to help learn Angular.';
+
+  //Objects
   objects = OBJECTS;
+  selectedObject: SampleObject;
 
-  //Object Exports
-  object1: SampleObject = {
-    title: 'Object 1',
-    desc: 'This is the first object.',
-    num: 442
-  };
-
-  object2: SampleObject = {
-    title: 'Object 2',
-    desc: 'This is the second object. Test.',
-    num: 5335
-  };
+  //Functions
+  displayInfo(object: SampleObject): void {
+    this.selectedObject = object;
+  }
 }

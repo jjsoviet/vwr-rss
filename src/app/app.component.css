@@ -18,6 +18,8 @@
   border-radius: 10px;
   margin: 10px 0;
   padding: 5px 10px;
+  transition: background 200ms ease, color 200ms ease;
+  -webkit-transition: background 200ms ease, color 200ms ease;
 }
 
 .object-list li .object-title {
@@ -28,4 +30,10 @@
 .object-list li .object-desc {
   font-weight: 1.4em;
   font-weight: bold;
+}
+
+.object-list li.selected,
+.object-list li:hover {
+  background: #AAA;
+  color: #FFF;
 }

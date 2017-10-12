@@ -2,21 +2,19 @@
   <h1>{{title}}</h1>
   <h4>{{message}}</h4>
 
-  <div class="object-container">
-    <h2>{{object1.title}}</h2>
-    <h4>{{object1.desc}}</h4>
-    <h4>{{object1.num}}</h4>
+
+  <div *ngIf="selectedObject">
+    <div class="object-container">
+      <h2>{{selectedObject.title}} Details</h2>
+      <input [(ngModel)]="selectedObject.desc" placeholder="description" />
+      <h4>{{selectedObject.num}}</h4>
+    </div>
   </div>
 
-  <div class="object-container">
-    <h2>{{object2.title}}</h2>
-    <input [(ngModel)]="object2.desc" placeholder="description" />
-    <h4>{{object2.num}}</h4>
-  </div>
 
   <div class="object-container">
     <ul class="object-list">
-      <li *ngFor="let object of objects">
+      <li *ngFor="let object of objects" [class.selected]="object === selectedObject" (click)="displayInfo(object)">
         <span class="object-title">{{object.title}}:</span><span class="object-desc">{{object.num}}</span>
       </li>
     </ul>
