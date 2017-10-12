@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-//Custom Data Objects
-export class SampleObject {
-  title: string;
-  desc: string;
-  num: number;
-}
+import { SampleObject } from './sampleobject';
 
 const OBJECTS: SampleObject[] = [
   { title: 'object 1', desc: 'this is object 1', num: 3342 },
@@ -26,7 +20,7 @@ export class AppComponent {
   title = 'VWR';
   message = 'This is an RSS app designed to help learn Angular.';
 
-  //Objects
+  //Objects for data binding
   objects = OBJECTS;
   selectedObject: SampleObject;
 
