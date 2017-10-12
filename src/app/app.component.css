@@ -1,6 +1,31 @@
-.container, .object-container {
+.container, .object-container, .object-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.object-list {
+  padding: 0;
+}
+
+.object-list li {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: #EEE;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 5px 10px;
+}
+
+.object-list li .object-title {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+.object-list li .object-desc {
+  font-weight: 1.4em;
+  font-weight: bold;
 }

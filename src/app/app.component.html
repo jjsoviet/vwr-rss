@@ -13,4 +13,12 @@
     <input [(ngModel)]="object2.desc" placeholder="description" />
     <h4>{{object2.num}}</h4>
   </div>
+
+  <div class="object-container">
+    <ul class="object-list">
+      <li *ngFor="let object of objects">
+        <span class="object-title">{{object.title}}:</span><span class="object-desc">{{object.num}}</span>
+      </li>
+    </ul>
+  </div>
 </div>
