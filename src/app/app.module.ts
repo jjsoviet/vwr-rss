@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 // Components to be declared and used
 import { NavbarComponent } from './views/components/navbar.component';
 import { FeedViewComponent } from './views/components/feed-view.component';
-import { RssService } from './services/rss.service';
+import { FeedService } from './services/feed.service';
+import { DTOService } from './services/dto.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RssService } from './services/rss.service';
     FormsModule
   ],
   providers: [
-    RssService
+    FeedService,
+    DTOService
   ],
   bootstrap: [
     NavbarComponent,

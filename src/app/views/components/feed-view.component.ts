@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Feed } from '../../data/feed';
-import { RssService } from '../../services/rss.service';
+import { DTO } from '../../data/dto';
+import { DTOService } from '../../services/dto.service'
 
 @Component({
   selector: 'feedview',
@@ -11,20 +12,21 @@ import { RssService } from '../../services/rss.service';
 
 export class FeedViewComponent implements OnInit {
   //Constructor
-  constructor(private rssService: RssService) { }
+  constructor(private dtoService: DTOService) { }
 
   //Interface implementation
   ngOnInit(): void {
-    this.getFeeds();
+    this.getDTO();
   }
 
   //Objects for data binding
+  dto: DTO;
   selectedFeed: Feed;
   feeds: Feed[];
 
   //Functions
-  getFeeds(): void {
-    this.rssService.getFeeds().then(feeds => this.feeds = feeds);
+  getDTO(): void {
+    this.dtoService.getDTO().then(dto => this.dto = dto).then(dto => this.feeds = dto.feeds);
   }
 
   displayFeed(feed: Feed): void {

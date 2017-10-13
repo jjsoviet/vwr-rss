@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { SampleObject } from './sampleobject';
 import { ObjectService } from './object.service';
 import { Feed } from './data/feed';
-import { RssService } from './services/rss.service';
+import { FeedService } from './services/feed.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { RssService } from './services/rss.service';
 
 export class AppComponent implements OnInit {
   //Constructor
-  constructor(private rssService: RssService) { }
+  constructor(private feedService: FeedService) { }
 
   //Interface implementation
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   //Functions
   getFeeds(): void {
-    this.rssService.getFeeds().then(feeds => this.feeds = feeds);
+    this.feedService.getFeeds().then(feeds => this.feeds = feeds);
   }
 
   displayFeed(feed: Feed): void {
