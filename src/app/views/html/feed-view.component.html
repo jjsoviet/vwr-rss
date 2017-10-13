@@ -1,13 +1,13 @@
 <div class="main-container">
   <div *ngIf="feeds; else elseBlock">
     <div class="feed-container">
-      <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item">
-        <img class="feed-img" src="{{feed.img}}" />
+      <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
+        <a href="{{feed.link}}" target="_blank">
         <div class="feed-info">
           <h3>{{feed.title}}</h3>
           <span>{{feed.content}}</span>
-          <a>{{feed.link}}</a>
         </div>
+      </a>
       </div>
     </div>
   </div>

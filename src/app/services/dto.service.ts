@@ -14,6 +14,8 @@ export class DTOService {
   title: string;
   link: string;
   feeds: Feed[];
+
+  //This will eventually be a true DTO pulling data from a source entered
   dto = { title: 'Source 1', link: 'https://www.google.com', feeds: this.feeds};
 
   //Singular mock source
