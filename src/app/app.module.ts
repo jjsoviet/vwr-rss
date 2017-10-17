@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 // Components to be declared and used
 import { NavbarComponent } from './views/components/navbar.component';
 import { FeedViewComponent } from './views/components/feed-view.component';
+import { FeedDetailComponent } from './views/components/feed-detail.component';
 import { FeedService } from './services/feed.service';
 import { DTOService } from './services/dto.service';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    FeedViewComponent
+    FeedViewComponent,
+    FeedDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { DTOService } from './services/dto.service';
   ],
   bootstrap: [
     NavbarComponent,
-    FeedViewComponent
+    FeedViewComponent,
+    FeedDetailComponent
   ]
 })
 export class AppModule { }

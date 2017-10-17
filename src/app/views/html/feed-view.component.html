@@ -2,16 +2,22 @@
   <div *ngIf="feeds; else elseBlock">
     <div class="feed-container">
       <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
-        <a href="{{feed.link}}" target="_blank">
         <div class="feed-info">
           <h3>{{feed.title}}</h3>
-          <span>{{feed.content}}</span>
         </div>
-      </a>
       </div>
     </div>
   </div>
 </div>
 
+<div class="detail-container">
+  <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
+  <div *ngIf="selectedFeed" class="detail-feed-container">
+      <img class="detail-img" src="{{selectedFeed.img}}" />
+        <h1>{{selectedFeed.title}}</h1>
+        <span>{{selectedFeed.content}}</span>
+        <a href="{{selectedFeed.link}}" class="feed-link" target="_blank">Read More ></a>
+  </div>
+</div>
 
 <ng-template #elseBlock>other content here...</ng-template>

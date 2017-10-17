@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { Feed } from '../../data/feed';
 import { DTO } from '../../data/dto';
 import { DTOService } from '../../services/dto.service'
+declare var $: any;
 
 @Component({
   selector: 'feedview',
@@ -31,5 +32,11 @@ export class FeedViewComponent implements OnInit {
 
   displayFeed(feed: Feed): void {
     this.selectedFeed = feed;
+    console.log("selected: " + this.selectedFeed.title);
+    $('.detail-container').addClass('selected');
+  }
+
+  close(): void {
+    $('.detail-container').removeClass('selected');
   }
 }

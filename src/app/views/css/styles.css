@@ -61,7 +61,7 @@
   position: absolute;
   top: 20vh;
   left: 50%;
-  z-index: 999;
+  z-index: 997;
   width: 100%;
   height: 100%;
   transform: translateX(-50%);
@@ -94,22 +94,18 @@
   -webkit-filter: grayscale(80%);
   transition: filter 400ms ease-in-out;
   -webkit-transition: -webkit-filter 400ms ease-in-out;
-}
-
-
-.feed-item a {
-  width: 100%;
-  text-decoration: none;
   color: #FFF;
 }
 
-.feed-item:hover {
+.feed-item:hover,
+.feed-item.selected {
   cursor: pointer;
   filter: grayscale(0%);
   -webkit-filter: grayscale(0%);
 }
 
-.feed-item:hover .feed-info {
+.feed-item:hover .feed-info,
+.feed-item.selected .feed-info {
   visibility: visible;
   opacity: 1;
 }
@@ -139,4 +135,91 @@
 
 .feed-img {
   max-width: 100%;
+}
+
+
+/*Feed Detail Styles*/
+.detail-container {
+  visibility: hidden;
+  opacity: 0;
+  z-index: 998;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 90vh;
+  width: 90vw;
+  background: #EEE;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transition: visibility 0s, opacity 300ms ease;
+  -webkit-transition: visibility 0s, opacity 300ms ease;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.detail-container.selected {
+  visibility: visible;
+  opacity: 1;
+}
+
+.detail-feed-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #000;
+}
+
+.close-button {
+  z-index: 999;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  top: 20px;
+  right: 20px;
+  border: 0;
+  border-radius: 30px;
+  background: transparent;
+  transition: background 300ms ease;
+  -webkit-transition: background 300ms ease;
+}
+
+.close-button i {
+  font-size: 3em;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background: #BBB;
+}
+
+.detail-feed-container .detail-img {
+  align-self: center;
+  max-width: 40vw;
+  height: auto;
+  margin: 60px 20px;
+}
+
+.detail-feed-container h1,
+.detail-feed-container span,
+.detail-feed-container a {
+  margin: 0 60px
+}
+
+.detail-feed-container h1 {
+  font-size: 3em;
+}
+
+.detail-feed-container span {
+  font-size: 1.4em;
+}
+
+.detail-feed-container a {
+  font-size: 1.6em;
+  font-weight: 600;
+  margin: 40px 60px;
 }

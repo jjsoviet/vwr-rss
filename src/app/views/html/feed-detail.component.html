@@ -1,0 +1,13 @@
+<div class="detail-container">
+  <div *ngIf="selectedFeed">
+    <div class="feed-detail-container">
+      <img class="detail-img" src="{{selectedFeed.img}}" />
+      <h1>{{selectedFeed.title}}</h1>
+      <span>{{selectedFeed.content}}</span>
+      <a href="{{selectedFeed.link}}" class="feed-link">Link</a>
+      <input [(ngModel)]="selectedFeed.title" placeholder="title" />
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>other content here...</ng-template>
