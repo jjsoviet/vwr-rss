@@ -4,6 +4,7 @@
       <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
         <div class="feed-info">
           <h3>{{feed.title}}</h3>
+          <span>{{feed.author}} {{feed.date}}</span>
         </div>
       </div>
     </div>
@@ -15,7 +16,8 @@
   <div *ngIf="selectedFeed" class="detail-feed-container">
       <img class="detail-img" src="{{selectedFeed.img}}" />
         <h1>{{selectedFeed.title}}</h1>
-        <span>{{selectedFeed.content}}</span>
+        <span class="author-date">{{selectedFeed.author}}  {{selectedFeed.date}}</span>
+        <span class="content">{{selectedFeed.content}}</span>
         <a href="{{selectedFeed.link}}" class="feed-link" target="_blank">Read More ></a>
   </div>
 </div>

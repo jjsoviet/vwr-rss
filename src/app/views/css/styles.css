@@ -10,7 +10,7 @@
   left: 0;
   width: 100vw;
   height: 40vh;
-  background: linear-gradient(90deg,#f7c626 15%,#f68c2f 40%,#e5127d 85%);
+  background: #bb1919;
 }
 
 .navbar-title {
@@ -24,7 +24,7 @@
 
 .navbar-title h1 {
   position: relative;
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 4em;
   color: #FFF;
 }
@@ -129,8 +129,13 @@
 }
 
 .feed-info h3 {
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   font-size: 1.6em;
+}
+
+.feed-into span {
+  font-weight: 600;
 }
 
 .feed-img {
@@ -148,6 +153,7 @@
   left: 50%;
   height: 90vh;
   width: 90vw;
+  max-width: 1024px;
   background: #EEE;
   overflow: hidden;
   transform: translate(-50%, -50%);
@@ -171,7 +177,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  color: #000;
+  color: #333;
 }
 
 .close-button {
@@ -199,9 +205,10 @@
 
 .detail-feed-container .detail-img {
   align-self: center;
-  max-width: 40vw;
+  width: 40vw;
+  max-width: 900px;
   height: auto;
-  margin: 60px 20px;
+  margin: 80px 20px;
 }
 
 .detail-feed-container h1,
@@ -211,11 +218,20 @@
 }
 
 .detail-feed-container h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   font-size: 3em;
 }
 
 .detail-feed-container span {
   font-size: 1.4em;
+}
+
+.detail-feed-container .author-date,
+.detail-feed-container .date {
+  display: inline;
+  font-weight: 600;
+  margin: 20px 60px;
 }
 
 .detail-feed-container a {
