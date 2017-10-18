@@ -15,11 +15,21 @@
   <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
   <div *ngIf="selectedFeed" class="detail-feed-container">
       <img class="detail-img" src="{{selectedFeed.img}}" />
-        <h1>{{selectedFeed.title}}</h1>
-        <span class="author-date">{{selectedFeed.author}}  {{selectedFeed.date}}</span>
-        <span class="content">{{selectedFeed.content}}</span>
-        <a href="{{selectedFeed.link}}" class="feed-link" target="_blank">Read More ></a>
+      <h1>{{selectedFeed.title}}</h1>
+      <span class="author-date">{{selectedFeed.author}}  {{selectedFeed.date}}</span>
+      <span class="content">{{selectedFeed.content}}</span>
+      <div class="link-container">
+        <button><a href="{{selectedFeed.link}}" class="feed-link" target="_blank">Read More ></a></button>
+        <div class="share-container">
+          <share-button button="facebook" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="twitter" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="google" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="reddit" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+        </div>
+      </div>
   </div>
 </div>
+
+<div class="darken-bg"></div>
 
 <ng-template #elseBlock>other content here...</ng-template>

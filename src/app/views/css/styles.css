@@ -24,7 +24,7 @@
 
 .navbar-title h1 {
   position: relative;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-size: 4em;
   color: #FFF;
 }
@@ -59,9 +59,9 @@
 /*Main View Styles*/
 .main-container {
   position: absolute;
-  top: 20vh;
+  top: 25vh;
   left: 50%;
-  z-index: 997;
+  z-index: 996;
   width: 100%;
   height: 100%;
   transform: translateX(-50%);
@@ -119,8 +119,8 @@
   align-items: flex-start;
   width: 100%;
   background: rgba(0,0,0, 0.5);
-  transition: visibility 0s, opacity 400ms ease-in-out;
-  -webkit-transition: visibility 0s, opacity 400ms ease-in-out;
+  transition: visibility 300ms ease-in-out, opacity 400ms ease-in-out;
+  -webkit-transition: visibility 300ms ease-in-out, opacity 400ms ease-in-out;
 }
 
 .feed-info h3,
@@ -129,7 +129,7 @@
 }
 
 .feed-info h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Heebo', sans-serif;
   font-weight: 400;
   font-size: 1.6em;
 }
@@ -172,7 +172,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -206,25 +206,25 @@
 .detail-feed-container .detail-img {
   align-self: center;
   width: 40vw;
-  max-width: 900px;
+  max-width: 1024px;
   height: auto;
-  margin: 80px 20px;
+  margin: 80px 20px 40px 20px;
 }
 
 .detail-feed-container h1,
 .detail-feed-container span,
-.detail-feed-container a {
+.detail-feed-container button {
   margin: 0 60px
 }
 
 .detail-feed-container h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 3em;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 600;
+  font-size: 2.4em;
 }
 
 .detail-feed-container span {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .detail-feed-container .author-date,
@@ -234,8 +234,70 @@
   margin: 20px 60px;
 }
 
-.detail-feed-container a {
+.link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.link-container button {
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  margin: 60px;
+  transition: background 300ms ease;
+  -webkit-transition: background 300ms ease;
+}
+
+.link-container button a {
+  color: #333;
+  text-decoration: none;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
   font-size: 1.6em;
-  font-weight: 600;
-  margin: 40px 60px;
+  padding: 10px;
+}
+
+.link-container button:hover {
+  cursor: pointer;
+  background: #BBB;
+}
+
+.link-container .share-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 60px;
+}
+
+.share-container share-button {
+  margin: 0 5px;
+}
+
+.share-container share-button input[type="button" i] {
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+}
+
+.darken-bg {
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 997;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 300ms ease-in-out, opacity 400ms ease-in-out;
+  -webkit-transition: visibility 300ms ease-in-out, opacity 400ms ease-in-out;
+}
+
+.darken-bg.active {
+  visibility: visible;
+  opacity: 1;
 }

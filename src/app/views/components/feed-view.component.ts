@@ -16,7 +16,7 @@ export class FeedViewComponent implements OnInit {
   dto: DTO;
   selectedFeed: Feed;
   feeds: Feed[];
-  
+
   //Constructor
   constructor(private dtoService: DTOService) { }
 
@@ -39,9 +39,11 @@ export class FeedViewComponent implements OnInit {
     this.selectedFeed = feed;
     console.log("selected: " + this.selectedFeed.title);
     $('.detail-container').addClass('selected');
+    $('.darken-bg').addClass('active');
   }
 
   close(): void {
     $('.detail-container').removeClass('selected');
+    $('.darken-bg').removeClass('active');
   }
 }
