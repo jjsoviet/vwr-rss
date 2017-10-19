@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   //Interface implementation
   ngOnInit(): void {
-    this.getFeeds();
+    // this.getFeeds();
   }
 
   //Objects for data binding
@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
   feeds: Feed[];
 
   //Functions
-  getFeeds(): void {
-    this.feedService.getFeeds().then(feeds => this.feeds = feeds);
-  }
+  // getFeeds(): void {
+  //   this.feedService.getFeeds().then(feeds => this.feeds = feeds);
+  // }
 
   displayFeed(feed: Feed): void {
     this.selectedFeed = feed;

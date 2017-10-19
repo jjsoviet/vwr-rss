@@ -1,7 +1,7 @@
 <div class="main-container">
-  <div *ngIf="feeds; else elseBlock">
+  <div *ngIf="dto; else elseBlock">
     <div class="feed-container">
-      <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
+      <div *ngFor="let feed of dto.feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
         <div class="feed-info">
           <h3>{{feed.title}}</h3>
           <span>{{feed.author}} {{feed.date}}</span>
@@ -11,6 +11,7 @@
   </div>
 </div>
 
+<!-- This should be in its separate component -->
 <div class="detail-container">
   <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
   <div *ngIf="selectedFeed" class="detail-feed-container">

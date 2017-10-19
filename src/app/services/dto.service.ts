@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { DTO } from '../data/dto';
 import { Feed } from '../data/feed';
 import { FeedService } from './feed.service';
@@ -10,6 +11,7 @@ export class DTOService {
   title: string;
   link: string;
   feeds: Feed[];
+
   //This will eventually be a true DTO pulling data from a source entered
   dto = { title: 'Source 1', link: 'https://www.google.com', feeds: this.feeds};
 
@@ -23,17 +25,29 @@ export class DTOService {
   }
 
   //Return the Source information
-  getDTO(): Promise<DTO> {
+  getDTO() {
     console.log("A service is requesting the DTO");
-    console.log(this.dto);
+    // console.log(this.dto);
 
-    this.getFeeds();
-    return Promise.resolve(this.dto);
+    this.feedService.getFeeds().subscribe(feeds => this.dto.feeds = feeds);
+
+    return Observable.of(this.dto);
   }
 
   //Get the Feed information
-  getFeeds(): void {
-    console.log("Source service requesting feeds");
-    this.feedService.getFeeds().then(feeds => this.dto.feeds = feeds).then(feeds => console.log(this.dto.feeds));
+  // getFeeds(): void {
+  //   console.log("Source service requesting feeds");
+  //   this.feedService.getFeeds().then(feeds => this.dto.feeds = feeds).then(feeds => console.log(this.dto.feeds));
+  // }
+
+  refreshDTO(): void {
+    this.dto = {
+      title: 'Source 1 Updated',
+      link: '',
+      feeds: []
+    };
+    this.feedService.clearFeeds();
+    console.log('Feed service cleared');
+    console.log(this.dto);
   }
 }

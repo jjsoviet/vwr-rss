@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Feed } from '../data/feed';
-import { FEEDS } from '../data/mock-rss';
+import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class FeedService {
   //Properties
-  rawData: string[];
   feeds: Feed[];
   sourceURL: string;
 
@@ -23,27 +22,24 @@ export class FeedService {
 
   //Return the RSS Feed information
   //For now this will return data from a single RSS source
-  getFeeds(): Promise<Feed[]> {
+  getFeeds() {
     console.log("A service is requesting feeds");
 
     //For now, use a converter to convert RSS to JSON
     //Will need to make own conversion algorithm
     console.log("Initializing HTTPClient with " + this.sourceURL);
-    this.http.get(this.sourceURL).subscribe(data => {
-      this.rawData = data['items'];
-
-      this.parseFeeds();
-    }, err => {
-      console.log("Error loading data");
-    })
-    return Promise.resolve(this.feeds);
+    return this.http.get(this.sourceURL).map(data => this.parseFeeds(data['items']));
   }
 
-  parseFeeds(): void {
+  clearFeeds(): void {
+    this.feeds = [];
+  }
+
+  parseFeeds(rawData: string[]): Feed[] {
     //Loop through each entry
-    for (var i = 0; i < this.rawData.length; i++) {
-      var feedObject = this.rawData[i];
-      console.log(feedObject);
+    for (var i = 0; i < rawData.length; i++) {
+      var feedObject = rawData[i];
+      // console.log(feedObject);
 
       var feed = new Feed();
       feed.title = feedObject['title'];
@@ -55,5 +51,7 @@ export class FeedService {
 
       this.feeds.push(feed);
     }
+
+    return this.feeds;
   }
 }

@@ -1,9 +1,24 @@
 <div class="navbar-fixed">
   <div class="navbar-title">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/BBC_logo_white.svg/2000px-BBC_logo_white.svg.png" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/BBC_logo_white.svg/2000px-BBC_logo_white.svg.png" (click)="showSelection()"/>
   </div>
   <div class="divider"></div>
   <button class="navbar-btn">
     <i class="material-icons">dashboard</i>
   </button>
+</div>
+
+<div class="selection-container">
+  <div class="selection-list">
+    <div class="selection-item">
+      <h1 (click)="switchSource('https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml%3Fedition%3Dus')">Top Stories</h1>
+    </div>
+    <div class="selection-item">
+      <h1 (click)="switchSource('https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fbusiness%2Frss.xml')">Business</h1>
+    </div>
+    <div class="selection-item">
+      <h1 (click)="switchSource('https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Ftechnology%2Frss.xml')">Technology</h1>
+    </div>
+  </div>
+  <button class="nav-close-button" (click)="close()"><i class="material-icons">close</i></button>
 </div>
