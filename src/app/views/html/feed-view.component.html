@@ -1,7 +1,7 @@
 <div class="main-container">
-  <div *ngIf="dto; else elseBlock">
+  <div *ngIf="dto.value.feeds; else elseBlock">
     <div class="feed-container">
-      <div *ngFor="let feed of dto.feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
+      <div *ngFor="let feed of dto.value.feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
         <div class="feed-info">
           <h3>{{feed.title}}</h3>
           <span>{{feed.author}} {{feed.date}}</span>
@@ -10,9 +10,10 @@
     </div>
   </div>
 </div>
+<feed-detail [currentField]="selectedFeed"></feed-detail>
 
 <!-- This should be in its separate component -->
-<div class="detail-container">
+<!-- <div class="detail-container">
   <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
   <div *ngIf="selectedFeed" class="detail-feed-container">
       <img class="detail-img" src="{{selectedFeed.img}}" />
@@ -29,8 +30,8 @@
         </div>
       </div>
   </div>
-</div>
+</div> -->
 
-<div class="darken-bg"></div>
+
 
 <ng-template #elseBlock>other content here...</ng-template>

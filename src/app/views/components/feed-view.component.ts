@@ -1,18 +1,21 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { Feed } from '../../data/feed';
 import { DTO } from '../../data/dto';
-import { DTOService } from '../../services/dto.service'
+import { DTOService } from '../../services/dto.service';
 declare var $: any;
 
 @Component({
   selector: 'feedview',
   templateUrl: '../html/feed-view.component.html',
+  changeDetection: ChangeDetectionStrategy.Default,
   styleUrls: ['../css/styles.css']
 })
 
 export class FeedViewComponent implements OnInit {
   //Properties
-  dto: DTO;
+  dto: Observable<DTO>;
   selectedFeed: Feed;
 
   //Constructor
@@ -20,7 +23,7 @@ export class FeedViewComponent implements OnInit {
 
   //Interface implementation
   ngOnInit(): void {
-    this.dtoService.getDTO().subscribe(dto => this.dto = dto);
+    this.getDTO();
   }
 
   //Functions
@@ -41,26 +44,30 @@ export class FeedViewComponent implements OnInit {
   }
 
   getDTO(): void {
-    // this.dtoService.getDTO().then(dto => this.dto = dto).then(dto => console.log("DTO: ")).then(dto => console.log(this.dto.title)).then(dto => console.log(this.dto.feeds)).then(dto => this.cdRef.detectChanges());
-    this.dtoService.getDTO().subscribe(dto => this.dto = dto);
+    this.dtoService.getDTO().subscribe(dto => {
+      this.dto = Observable.of(dto);
+      this.cdRef.markForCheck();
+    });
+
     this.cdRef.detectChanges();
     console.log(this.dto);
   }
 
   displayFeed(feed: Feed): void {
     this.selectedFeed = feed;
-    console.log("selected: " + this.selectedFeed.title);
+    console.log("Selected: " + this.selectedFeed.title);
     $('.detail-container').addClass('selected');
     this.disableView();
   }
 
-  close(): void {
-    $('.detail-container').removeClass('selected');
-    this.enableView();
+  refreshFeedView(): void {
+    console.log("Force refreshing...");
+    this.cdRef.detectChanges();
   }
 
   disableView(): void {
     $('.darken-bg').addClass('active');
+
     var x=window.scrollX;
     var y=window.scrollY;
     window.onscroll=function(){window.scrollTo(x, y);};

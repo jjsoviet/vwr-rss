@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { DTO } from '../data/dto';
 import { Feed } from '../data/feed';
 import { FeedService } from './feed.service';
@@ -25,7 +26,7 @@ export class DTOService {
   }
 
   //Return the Source information
-  getDTO() {
+  getDTO(): Observable<DTO> {
     console.log("A service is requesting the DTO");
     // console.log(this.dto);
 
