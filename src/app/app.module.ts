@@ -29,8 +29,7 @@ import { DTOService } from './services/dto.service';
   ],
   bootstrap: [
     NavbarComponent,
-    FeedViewComponent,
-    FeedDetailComponent
+    FeedViewComponent
   ]
 })
 export class AppModule { }

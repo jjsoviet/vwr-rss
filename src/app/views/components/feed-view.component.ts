@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Feed } from '../../data/feed';
@@ -9,7 +9,6 @@ declare var $: any;
 @Component({
   selector: 'feedview',
   templateUrl: '../html/feed-view.component.html',
-  changeDetection: ChangeDetectionStrategy.Default,
   styleUrls: ['../css/styles.css']
 })
 
@@ -31,7 +30,6 @@ export class FeedViewComponent implements OnInit {
   refreshSource(source: string): void {
     this.dto = null;
     this.dtoService.refreshDTO();
-    this.cdRef.detectChanges();
     console.log(this.dto);
 
     setTimeout(() => {
@@ -49,8 +47,6 @@ export class FeedViewComponent implements OnInit {
       this.dto = Observable.of(dto);
       this.cdRef.markForCheck();
     });
-
-    this.cdRef.detectChanges();
     console.log(this.dto);
   }
 

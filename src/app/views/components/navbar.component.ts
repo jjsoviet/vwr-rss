@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   //Constructor
   constructor(private feedViewComponent: FeedViewComponent, private feedDetailComponent: FeedDetailComponent) {
-    this.source = 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml%3Fedition%3Dus';
+    this.source = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.wired.com%2Ffeed%2Frss';
   }
 
   //Interface implementation

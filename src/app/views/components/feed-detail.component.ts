@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FeedViewComponent } from './feed-view.component';
 import { Feed } from '../../data/feed';
 declare var $: any;
 
@@ -12,10 +13,10 @@ export class FeedDetailComponent {
   //Properties
   @Input() currentFeed: Feed;
 
-  constructor () {}
+  constructor (private feedView: FeedViewComponent) {}
 
   close(): void {
     $('.detail-container').removeClass('selected');
-    $('.darken-bg').removeClass('active');
+    this.feedView.enableView();
   }
 }

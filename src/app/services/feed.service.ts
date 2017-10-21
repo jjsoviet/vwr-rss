@@ -47,7 +47,7 @@ export class FeedService {
       feed.author = feedObject['author'];
       feed.img = feedObject['thumbnail'];
       feed.content = feedObject['content'];
-      feed.link = feedObject['guid'];
+      feed.link = feedObject['thumbnail'];
 
       this.feeds.push(feed);
     }
