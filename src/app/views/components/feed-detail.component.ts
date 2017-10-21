@@ -10,7 +10,7 @@ declare var $: any;
 
 export class FeedDetailComponent {
   //Properties
-  @Input() currentField: Feed;
+  @Input() currentFeed: Feed;
 
   constructor () {}
 

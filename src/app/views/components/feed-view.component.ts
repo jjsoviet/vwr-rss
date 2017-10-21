@@ -24,6 +24,7 @@ export class FeedViewComponent implements OnInit {
   //Interface implementation
   ngOnInit(): void {
     this.getDTO();
+    this.selectedFeed = null;
   }
 
   //Functions
