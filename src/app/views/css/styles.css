@@ -162,8 +162,8 @@
   -webkit-filter: grayscale(80%);
   transition: filter 400ms ease-in-out;
   -webkit-transition: -webkit-filter 400ms ease-in-out;
-  animation: fadeIn 400ms 1;
-  -webkit-animation: fadeIn 400ms 1;
+  animation: fadeIn 800ms ease-in-out 1;
+  -webkit-animation: fadeIn 800ms ease-in-out 1;
   color: #FFF;
 }
 

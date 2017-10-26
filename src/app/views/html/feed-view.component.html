@@ -4,7 +4,7 @@
       <div *ngFor="let feed of dto.feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
         <div class="feed-info">
           <h3>{{feed.title}}</h3>
-          <span>{{feed.author}} | {{feed.date}}</span>
+          <span>{{feed.author}} {{feed.date}}</span>
         </div>
       </div>
     </div>

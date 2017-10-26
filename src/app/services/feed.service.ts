@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
+import * as moment from 'moment';
 import * as feedParser from 'rss-to-json';
 
 @Injectable()
@@ -34,7 +35,7 @@ export class FeedService {
     let parsedFeeds = Object.create(this.feeds);
 
     feedParser.load(this.sourceURL, (err, res) => {
-      //console.log(`RAW: ${JSON.stringify(res)}`);
+      //console.log(`RAW: ${JSON.stringify(res['items'])}`);
       parsedFeeds = this.parseFeeds(res);
       //console.log(`Feeds: ${JSON.stringify(parsedFeeds)}`);
       // parsedFeeds.forEach(feed => this.subject.next(feed));
@@ -50,10 +51,11 @@ export class FeedService {
     let currFeeds = Object.create(this.feeds);
 
     for (let i = 0; i < rawData.length; i++) {
+      console.log(`RAW: ${JSON.stringify(rawData[i])}`);
       let currFeed = Object.create(this.feed);
       currFeed.title = rawData[i]['title'];
-      currFeed.date = rawData[i]['created'];
-      currFeed.author = "author";
+      currFeed.date = this.formatDate(rawData[i]['created']);
+      currFeed.author = rawData[i]['creator'];
       currFeed.img = rawData[i]['media']['thumbnail'][0]['url'][0];
       currFeed.content = rawData[i]['description'];
       currFeed.link = rawData[i]['link'];
@@ -62,6 +64,13 @@ export class FeedService {
     };
 
     return currFeeds;
+  }
+
+  formatDate(rawDate: string) {
+    let date = new Date(Number(rawDate));
+    let medDateFormat = moment(date).format('MMM Do YYYY, h:mm a');
+    let elapsed = moment(date).startOf('hour').fromNow();
+    return `${medDateFormat} (${elapsed})`;
   }
 
   refreshFeeds() {
