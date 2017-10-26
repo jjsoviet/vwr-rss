@@ -13,35 +13,37 @@ declare var $: any;
 export class NavbarComponent implements OnInit {
   //Sample Sources
   source: string;
+  defaultSource: string;
 
   //Constructor
   constructor(private feedViewComponent: FeedViewComponent, private feedDetailComponent: FeedDetailComponent) {
-    this.source = 'https://www.wired.com/feed/rss';
+    this.defaultSource = 'https://www.wired.com/feed/rss';
+    this.source = this.defaultSource;
   }
 
   //Interface implementation
-  ngOnInit(): void {
+  ngOnInit() {
     this.feedViewComponent.setSource(this.source);
   }
 
   //Functions
-  showSelection(): void {
+  showSelection() {
     $('.selection-container').addClass('active');
     this.feedViewComponent.disableView();
   }
 
-  close(): void {
+  closeDetail() {
     this.feedViewComponent.enableView();
     $('.selection-container').removeClass('active');
   }
 
-  switchSource(newSource: string): void {
+  switchSource(newSource: string) {
     this.source = newSource;
-    this.close();
+    this.closeDetail();
     this.feedViewComponent.refreshSource(this.source);
   }
 
-  refreshView(): void {
-    this.feedViewComponent.refreshFeedView();
+  changeViewType() {
+
   }
 }

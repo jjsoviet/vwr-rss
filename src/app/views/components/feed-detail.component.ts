@@ -18,10 +18,12 @@ export class FeedDetailComponent {
       $('.sb-wrapper').css("background", "transparent");
       $('.sb-wrapper').css("border", "0");
       $('.sb-wrapper').css("font-size", "1.3em");
+      $('.sb-wrapper').css("transition", " background 200ms ease-in-out, color 200ms ease-in-out");
+      $('.sb-wrapper:hover').css("background", "#333");
     }, 0);
   }
 
-  close(): void {
+  closeDetail(): void {
     $('.detail-container').removeClass('selected');
     this.feedView.enableView();
   }

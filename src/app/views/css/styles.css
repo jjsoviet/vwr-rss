@@ -219,7 +219,7 @@
   position: fixed;
   bottom: -100vh;
   left: 50%;
-  height: 90vh;
+  height: 95vh;
   width: 90vw;
   max-width: 1024px;
   background: #FFF;
@@ -293,7 +293,7 @@
   align-self: center;
   width: 100%;
   max-width: 1024px;
-  height: 600px;
+  height: 500px;
   overflow: hidden;
   margin: 0 0 40px 0;
   background-size: cover;
@@ -303,7 +303,7 @@
 
 .detail-feed-container h1,
 .detail-feed-container span,
-.detail-feed-container button {
+.detail-feed-container a {
   margin: 0 60px
 }
 
@@ -332,27 +332,21 @@
   width: 100%;
 }
 
-.link-container button {
-  background: transparent;
-  border: 0;
-  border-radius: 5px;
-  margin: 60px;
-  transition: background 300ms ease;
-  -webkit-transition: background 300ms ease;
-}
 
-.link-container button a {
+.link-container a {
   color: #333;
   text-decoration: none;
+  border-bottom: 2px solid transparent;
   font-family: 'Heebo', sans-serif;
   font-weight: 700;
   font-size: 1.6em;
-  padding: 10px;
+  transition: border-color 200ms ease-in-out;
+  -webkit-transition: border-color 200ms ease-in-out;
 }
 
-.link-container button:hover {
+.link-container a:hover {
   cursor: pointer;
-  background: #BBB;
+  border-color: #333;
 }
 
 .link-container .share-container {
@@ -370,6 +364,14 @@
 .share-container share-button .sb-wrapper.transparent {
   background: transparent;
   border: 0;
+  transition: background 200ms ease-in-out, color 200ms ease-in-out;
+  -webkit-transition: background 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.share-container share-button .sb-wrapper.transparent:hover {
+  cursor: pointer;
+  background: #333;
+  color: #FFF;
 }
 
 /*Background Styles*/

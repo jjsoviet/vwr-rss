@@ -22,21 +22,18 @@ export class DTOService {
   setSource(source: string) {
     if (source != null || source != undefined) {
       this.feedService.initializeSource(source);
-      this.feedService.refreshFeeds();
+      this.feedService.getFeeds();
     }
-
   }
 
   //Return the Source information
-  getDTO(): Observable<any> {
+  getDTO() {
     console.log("A service is requesting the DTO");
     let currDTO = Object.create(this.dto);
     console.log(`New DTO: ${currDTO.title}`);
 
-
     this.feedService.getFeeds().subscribe(feeds => {
       currDTO.feeds = feeds;
-
       // currDTO.feeds.forEach(feed => console.log(`Received Feed: ${JSON.stringify(feed['title'])}`));
       //console.log(`DTO: ${JSON.stringify(currDTO.feeds)}`);
       this.subject.next({ dto: currDTO });

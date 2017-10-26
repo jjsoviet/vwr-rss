@@ -3,7 +3,7 @@
     <img src="http://exciteddelirium.net/wp-content/uploads/2015/12/Wired-Logo.png" (click)="showSelection()"/>
   </div>
   <div class="divider"></div>
-  <button class="navbar-btn" (click)="refreshView()">
+  <button class="navbar-btn" (click)="changeViewType()">
     <i class="material-icons">dashboard</i>
   </button>
 </div>
@@ -20,5 +20,5 @@
       <h1 (click)="switchSource('https://www.wired.com/feed/category/culture/latest/rss')">Culture</h1>
     </div>
   </div>
-  <button class="nav-close-button" (click)="close()"><i class="material-icons">close</i></button>
+  <button class="nav-close-button" (click)="closeDetail()"><i class="material-icons">close</i></button>
 </div>

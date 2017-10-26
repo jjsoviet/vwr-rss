@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Feed } from '../../data/feed';
@@ -18,7 +18,7 @@ export class FeedViewComponent implements OnInit {
   selectedFeed: Feed;
 
   //Constructor
-  constructor(private dtoService: DTOService, private cdRef: ChangeDetectorRef) { }
+  constructor(private dtoService: DTOService) { }
 
   //Interface implementation
   ngOnInit() {
@@ -31,7 +31,6 @@ export class FeedViewComponent implements OnInit {
     //this.dto.feeds = [];
     this.dtoService.setSource(source);
     this.getDTO();
-    console.log(`DTO: ${this.dto}`);
   }
 
   setSource(source: string): void {
@@ -41,24 +40,18 @@ export class FeedViewComponent implements OnInit {
   getDTO() {
     this.dtoService.getDTO().subscribe((dto) => {
       this.dto = dto['dto'];
-
-      //console.log(`Updated DTO: ${JSON.stringify(this.dto.feeds)}`);
     });
-
-    setTimeout(() => {
-      console.log(`DTO: ${this.dto}`);
-    }, 2000);
   }
 
   displayFeed(feed: Feed) {
     this.selectedFeed = feed;
-    console.log("Selected: " + this.selectedFeed.title);
     $('.detail-container').addClass('selected');
     this.disableView();
   }
 
   refreshFeedView() {
-    console.log(`DTO: ${this.dto}`);
+    console.log(`${this.dto}`);
+    //Refresh the data sync
   }
 
   disableView() {

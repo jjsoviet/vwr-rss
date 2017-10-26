@@ -30,16 +30,12 @@ export class FeedService {
 
   //Return the RSS Feed information
   //For now this will return data from a single RSS source
-  getFeeds(): Observable<any> {
+  getFeeds() {
     console.log(`A service is requesting feeds from URL ${this.sourceURL}`);
     let parsedFeeds = Object.create(this.feeds);
 
     feedParser.load(this.sourceURL, (err, res) => {
-      //console.log(`RAW: ${JSON.stringify(res['items'])}`);
       parsedFeeds = this.parseFeeds(res);
-      //console.log(`Feeds: ${JSON.stringify(parsedFeeds)}`);
-      // parsedFeeds.forEach(feed => this.subject.next(feed));
-
       this.subject.next(parsedFeeds);
     });
 
@@ -51,7 +47,6 @@ export class FeedService {
     let currFeeds = Object.create(this.feeds);
 
     for (let i = 0; i < rawData.length; i++) {
-      console.log(`RAW: ${JSON.stringify(rawData[i])}`);
       let currFeed = Object.create(this.feed);
       currFeed.title = rawData[i]['title'];
       currFeed.date = this.formatDate(rawData[i]['created']);
@@ -71,9 +66,5 @@ export class FeedService {
     let medDateFormat = moment(date).format('MMM Do YYYY, h:mm a');
     let elapsed = moment(date).startOf('hour').fromNow();
     return `${medDateFormat} (${elapsed})`;
-  }
-
-  refreshFeeds() {
-    this.getFeeds();
   }
 }

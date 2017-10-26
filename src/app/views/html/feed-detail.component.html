@@ -1,12 +1,12 @@
 <div class="detail-container">
-  <button class="close-button" (click)="close()"><i class="material-icons">close</i></button>
+  <button class="close-button" (click)="closeDetail()"><i class="material-icons">close</i></button>
   <div *ngIf="currentFeed; else elseBlock" class="detail-feed-container">
       <div class="detail-img" [style.background-image]="'url(' + currentFeed.img + ')'"></div>
       <h1>{{currentFeed.title}}</h1>
       <span class="author-date">{{currentFeed.author}} {{currentFeed.date}}</span>
       <span class="content">{{currentFeed.content}}</span>
       <div class="link-container">
-        <button><a href="{{currentFeed.link}}" class="feed-link" target="_blank">Read More ></a></button>
+        <a href="{{currentFeed.link}}" class="feed-link" target="_blank">Read More ></a>
         <div class="share-container">
           <share-button button="facebook" url="{{currentFeed.link}}" title="{{currentFeed.title}}" image="{{currentFeed.image}}" buttonClass="share-button"></share-button>
           <share-button button="twitter" url="{{currentFeed.link}}" title="{{currentFeed.title}}" image="{{currentFeed.image}}" buttonClass="share-button"></share-button>
