@@ -1,3 +1,9 @@
+/*Animations*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /*Navbar Styles*/
 .navbar-fixed {
   z-index: 1;
@@ -10,7 +16,7 @@
   left: 0;
   width: 100vw;
   height: 400px;
-  background: #444;
+  background: #222;
 }
 
 .navbar-title {
@@ -141,6 +147,8 @@
 /*RSS Feed Item Styles*/
 .feed-item {
   display: flex;
+  visibility: visible;
+  opacity: 1;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
@@ -154,6 +162,8 @@
   -webkit-filter: grayscale(80%);
   transition: filter 400ms ease-in-out;
   -webkit-transition: -webkit-filter 400ms ease-in-out;
+  animation: fadeIn 400ms 1;
+  -webkit-animation: fadeIn 400ms 1;
   color: #FFF;
 }
 
@@ -212,7 +222,7 @@
   height: 90vh;
   width: 90vw;
   max-width: 1024px;
-  background: #EEE;
+  background: #FFF;
   overflow: hidden;
   transform: translate(-50%, 0%);
   -webkit-transform: translate(-50%, 0%);
@@ -256,6 +266,10 @@
   background: #222;
 }
 
+.close-button {
+  background: rgba(255,255,255,0.5);
+}
+
 .nav-close-button i {
   color: #FFF;
 }
@@ -277,10 +291,14 @@
 
 .detail-feed-container .detail-img {
   align-self: center;
-  width: 40vw;
+  width: 100%;
   max-width: 1024px;
-  height: auto;
-  margin: 80px 20px 40px 20px;
+  height: 600px;
+  overflow: hidden;
+  margin: 0 0 40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .detail-feed-container h1,
@@ -349,10 +367,9 @@
   margin: 0 5px;
 }
 
-.share-container share-button input[type="button" i] {
+.share-container share-button .sb-wrapper.transparent {
   background: transparent;
   border: 0;
-  border-radius: 5px;
 }
 
 /*Background Styles*/

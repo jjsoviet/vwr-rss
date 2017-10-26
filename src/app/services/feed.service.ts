@@ -1,57 +1,70 @@
 import { Injectable } from '@angular/core';
 import { Feed } from '../data/feed';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
+import * as feedParser from 'rss-to-json';
 
 @Injectable()
 export class FeedService {
   //Properties
+  feed: Feed;
   feeds: Feed[];
+  subject: Subject<Feed[]>;
   sourceURL: string;
 
   //Constructor initializing HttpClient
   constructor(private http: HttpClient) {
-    this.feeds = [];
+    this.feed = new Feed();
+    this.feeds = new Array<Feed>();
+    this.subject = new Subject<Feed[]>();
   }
 
   //Functions
-  initializeSource(source: string): void {
-    this.sourceURL = source;
-    console.log("Source: " + this.sourceURL);
+  initializeSource(source: string) {
+    if (source != null || source != undefined)
+      this.sourceURL = source;
   }
 
   //Return the RSS Feed information
   //For now this will return data from a single RSS source
-  getFeeds() {
-    console.log("A service is requesting feeds");
+  getFeeds(): Observable<any> {
+    console.log(`A service is requesting feeds from URL ${this.sourceURL}`);
+    let parsedFeeds = Object.create(this.feeds);
 
-    //For now, use a converter to convert RSS to JSON
-    //Will need to make own conversion algorithm
-    console.log("Initializing HTTPClient with " + this.sourceURL);
-    return this.http.get(this.sourceURL).map(data => this.parseFeeds(data['items']));
+    feedParser.load(this.sourceURL, (err, res) => {
+      //console.log(`RAW: ${JSON.stringify(res)}`);
+      parsedFeeds = this.parseFeeds(res);
+      //console.log(`Feeds: ${JSON.stringify(parsedFeeds)}`);
+      // parsedFeeds.forEach(feed => this.subject.next(feed));
+
+      this.subject.next(parsedFeeds);
+    });
+
+    return this.subject.asObservable();
   }
 
-  clearFeeds(): void {
-    this.feeds = [];
+  parseFeeds(res: Response) {
+    let rawData = res['items'];
+    let currFeeds = Object.create(this.feeds);
+
+    for (let i = 0; i < rawData.length; i++) {
+      let currFeed = Object.create(this.feed);
+      currFeed.title = rawData[i]['title'];
+      currFeed.date = rawData[i]['created'];
+      currFeed.author = "author";
+      currFeed.img = rawData[i]['media']['thumbnail'][0]['url'][0];
+      currFeed.content = rawData[i]['description'];
+      currFeed.link = rawData[i]['link'];
+
+      currFeeds.push(currFeed);
+    };
+
+    return currFeeds;
   }
 
-  parseFeeds(rawData: string[]): Feed[] {
-    //Loop through each entry
-    for (var i = 0; i < rawData.length; i++) {
-      var feedObject = rawData[i];
-      // console.log(feedObject);
-
-      var feed = new Feed();
-      feed.title = feedObject['title'];
-      feed.date = feedObject['pubDate'];
-      feed.author = feedObject['author'];
-      feed.img = feedObject['thumbnail'];
-      feed.content = feedObject['content'];
-      feed.link = feedObject['thumbnail'];
-
-      this.feeds.push(feed);
-    }
-
-    return this.feeds;
+  refreshFeeds() {
+    this.getFeeds();
   }
 }

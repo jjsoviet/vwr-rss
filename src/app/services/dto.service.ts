@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
 import { DTO } from '../data/dto';
 import { Feed } from '../data/feed';
@@ -7,48 +8,40 @@ import { FeedService } from './feed.service';
 
 @Injectable()
 export class DTOService {
-  //Properties
-  sourceURL: string;
-  title: string;
-  link: string;
-  feeds: Feed[];
-
   //This will eventually be a true DTO pulling data from a source entered
-  dto = { title: 'Source 1', link: 'https://www.google.com', feeds: this.feeds};
+  dto: DTO;
+  subject: Subject<any>;
 
   //Constructor
-  constructor(private feedService: FeedService) { }
+  constructor(private feedService: FeedService) {
+    this.dto = new DTO();
+    this.subject = new Subject<any>();
+  }
 
   //Functions
-  setSource(source: string): void {
-    this.sourceURL = source;
-    this.feedService.initializeSource(this.sourceURL);
+  setSource(source: string) {
+    if (source != null || source != undefined) {
+      this.feedService.initializeSource(source);
+      this.feedService.refreshFeeds();
+    }
+
   }
 
   //Return the Source information
-  getDTO(): Observable<DTO> {
+  getDTO(): Observable<any> {
     console.log("A service is requesting the DTO");
-    // console.log(this.dto);
+    let currDTO = Object.create(this.dto);
+    console.log(`New DTO: ${currDTO.title}`);
 
-    this.feedService.getFeeds().subscribe(feeds => this.dto.feeds = feeds);
 
-    return Observable.of(this.dto);
-  }
+    this.feedService.getFeeds().subscribe(feeds => {
+      currDTO.feeds = feeds;
 
-  //Get the Feed information
-  // getFeeds(): void {
-  //   console.log("Source service requesting feeds");
-  //   this.feedService.getFeeds().then(feeds => this.dto.feeds = feeds).then(feeds => console.log(this.dto.feeds));
-  // }
+      // currDTO.feeds.forEach(feed => console.log(`Received Feed: ${JSON.stringify(feed['title'])}`));
+      //console.log(`DTO: ${JSON.stringify(currDTO.feeds)}`);
+      this.subject.next({ dto: currDTO });
+    });
 
-  refreshDTO(): void {
-    this.dto = {
-      title: 'Source 1 Updated',
-      link: '',
-      feeds: []
-    };
-    this.feedService.clearFeeds();
-    console.log('Feed service cleared');
-    console.log(this.dto);
+    return this.subject.asObservable();
   }
 }

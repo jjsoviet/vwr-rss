@@ -13,7 +13,13 @@ export class FeedDetailComponent {
   //Properties
   @Input() currentFeed: Feed;
 
-  constructor (private feedView: FeedViewComponent) {}
+  constructor (private feedView: FeedViewComponent) {
+    setTimeout(function() {
+      $('.sb-wrapper').css("background", "transparent");
+      $('.sb-wrapper').css("border", "0");
+      $('.sb-wrapper').css("font-size", "1.3em");
+    }, 0);
+  }
 
   close(): void {
     $('.detail-container').removeClass('selected');

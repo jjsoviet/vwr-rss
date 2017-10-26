@@ -21,48 +21,47 @@ export class FeedViewComponent implements OnInit {
   constructor(private dtoService: DTOService, private cdRef: ChangeDetectorRef) { }
 
   //Interface implementation
-  ngOnInit(): void {
+  ngOnInit() {
     this.getDTO();
     this.selectedFeed = null;
   }
 
   //Functions
-  refreshSource(source: string): void {
-    this.dto = null;
-    this.dtoService.refreshDTO();
-    console.log(this.dto);
-
-    setTimeout(() => {
-      this.setSource(source);
-      this.getDTO();
-    }, 1000);
+  refreshSource(source: string) {
+    //this.dto.feeds = [];
+    this.dtoService.setSource(source);
+    this.getDTO();
+    console.log(`DTO: ${this.dto}`);
   }
 
   setSource(source: string): void {
     this.dtoService.setSource(source);
   }
 
-  getDTO(): void {
-    this.dtoService.getDTO().subscribe(dto => {
-      this.dto = Observable.of(dto);
-      this.cdRef.markForCheck();
+  getDTO() {
+    this.dtoService.getDTO().subscribe((dto) => {
+      this.dto = dto['dto'];
+
+      //console.log(`Updated DTO: ${JSON.stringify(this.dto.feeds)}`);
     });
-    console.log(this.dto);
+
+    setTimeout(() => {
+      console.log(`DTO: ${this.dto}`);
+    }, 2000);
   }
 
-  displayFeed(feed: Feed): void {
+  displayFeed(feed: Feed) {
     this.selectedFeed = feed;
     console.log("Selected: " + this.selectedFeed.title);
     $('.detail-container').addClass('selected');
     this.disableView();
   }
 
-  refreshFeedView(): void {
-    console.log("Force refreshing...");
-    this.cdRef.detectChanges();
+  refreshFeedView() {
+    console.log(`DTO: ${this.dto}`);
   }
 
-  disableView(): void {
+  disableView() {
     $('.darken-bg').addClass('active');
 
     var x=window.scrollX;
@@ -70,7 +69,7 @@ export class FeedViewComponent implements OnInit {
     window.onscroll=function(){window.scrollTo(x, y);};
   }
 
-  enableView(): void {
+  enableView() {
     $('.darken-bg').removeClass('active');
     window.onscroll=function(){};
   }
