@@ -49,7 +49,8 @@ export class FeedService {
     for (let i = 0; i < rawData.length; i++) {
       let currFeed = Object.create(this.feed);
       currFeed.title = rawData[i]['title'];
-      currFeed.date = this.formatDate(rawData[i]['created']);
+      currFeed.longDate = this.formatDate(rawData[i]['created'], true);
+      currFeed.shortDate = this.formatDate(rawData[i]['created'], false);
       currFeed.author = rawData[i]['creator'];
       currFeed.img = rawData[i]['media']['thumbnail'][0]['url'][0];
       currFeed.content = rawData[i]['description'];
@@ -61,10 +62,12 @@ export class FeedService {
     return currFeeds;
   }
 
-  formatDate(rawDate: string) {
+  formatDate(rawDate: string, isLong: boolean) {
     let date = new Date(Number(rawDate));
-    let medDateFormat = moment(date).format('MMM Do YYYY, h:mm a');
-    let elapsed = moment(date).startOf('hour').fromNow();
-    return `${medDateFormat} (${elapsed})`;
+
+    if (isLong)
+      return moment(date).format('MMM Do YYYY, h:mm a');
+    else
+      return moment(date).startOf('hour').fromNow();
   }
 }

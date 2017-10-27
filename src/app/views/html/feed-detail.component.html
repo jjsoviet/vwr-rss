@@ -3,7 +3,8 @@
   <div *ngIf="currentFeed; else elseBlock" class="detail-feed-container">
       <div class="detail-img" [style.background-image]="'url(' + currentFeed.img + ')'"></div>
       <h1>{{currentFeed.title}}</h1>
-      <span class="author-date">{{currentFeed.author}} {{currentFeed.date}}</span>
+      <span class="author-date">{{currentFeed.author}} {{currentFeed.longDate}} ({{currentFeed.shortDate}})</span>
+      <div class="content-divider"></div>
       <span class="content">{{currentFeed.content}}</span>
       <div class="link-container">
         <a href="{{currentFeed.link}}" class="feed-link" target="_blank">Read More ></a>

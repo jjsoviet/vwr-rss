@@ -28,28 +28,37 @@
   margin-top: 40px;
 }
 
-.navbar-title:hover {
-  cursor: pointer;
-}
-
 .navbar-title h1 {
   position: relative;
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Pragati Narrow', sans-serif;
   font-size: 4em;
   color: #FFF;
 }
 
 .navbar-title img {
+  box-sizing: content-box;
   width: 340px;
   height: auto;
   padding: 20px;
   background: transparent;
-  transition: background 300ms ease;
-  -webkit-transition: background 300ms ease;
 }
 
-.navbar-title:hover img {
-  background: rgba(255,255,255,0.3);
+.navbar-title .nav-selection {
+  font-family: 'Pragati Narrow', sans-serif;
+  font-size: 2em;
+  font-weight: 400;
+  color: #FFF;
+  background: transparent;
+  padding: 3px 20px;
+  border: 0;
+  border-radius: 5px;
+  transition: background 200ms ease-in-out;
+  -webkit-transition: background 200ms ease-in-out;
+}
+
+.navbar-title .nav-selection:hover {
+  cursor: pointer;
+  background: #888;
 }
 
 .navbar-fixed .divider {
@@ -57,7 +66,7 @@
   height: 1px;
   width: 40%;
   background: #FFF;
-  margin-top: 30px;
+  margin: 10px 0;
 }
 
 .navbar-btn {
@@ -115,7 +124,7 @@
 }
 
 .selection-item h1 {
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Pragati Narrow', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   color: #FFF;
@@ -195,17 +204,19 @@
 
 .feed-info h3,
 .feed-info span {
-  margin: 10px;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 400;
 }
 
 .feed-info h3 {
-  font-family: 'Heebo', sans-serif;
-  font-weight: 400;
   font-size: 1.6em;
+  line-height: 1.2em;
+  margin: 10px 10px 0 10px;
 }
 
-.feed-into span {
-  font-weight: 600;
+.feed-info span {
+  font-size: 1em;
+  margin: 5px 10px 10px 10px;
 }
 
 .feed-img {
@@ -295,7 +306,7 @@
   max-width: 1024px;
   height: 500px;
   overflow: hidden;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -308,20 +319,33 @@
 }
 
 .detail-feed-container h1 {
-  font-family: 'Heebo', sans-serif;
-  font-weight: 600;
-  font-size: 2.4em;
-}
-
-.detail-feed-container span {
-  font-size: 1.2em;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
+  line-height: 1.2em;
+  margin: 10px 60px;
 }
 
 .detail-feed-container .author-date,
 .detail-feed-container .date {
   display: inline;
-  font-weight: 600;
-  margin: 20px 60px;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  margin: 0 60px;
+}
+
+.detail-feed-container .content-divider {
+  align-self: center;
+  width: 90%;
+  height: 1px;
+  background: #333;
+  margin: 20px 0;
+}
+
+.detail-feed-container .content {
+  margin: 10px 60px;
+  font-size: 1.2em;
 }
 
 .link-container {
@@ -329,6 +353,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 10px 0;
   width: 100%;
 }
 
@@ -337,9 +362,10 @@
   color: #333;
   text-decoration: none;
   border-bottom: 2px solid transparent;
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Pragati Narrow', sans-serif;
   font-weight: 700;
   font-size: 1.6em;
+  line-height: 1em;
   transition: border-color 200ms ease-in-out;
   -webkit-transition: border-color 200ms ease-in-out;
 }
@@ -354,7 +380,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 60px;
+  margin: 40px 60px;
 }
 
 .share-container share-button {

@@ -1,8 +1,9 @@
 <div class="navbar-fixed">
   <div class="navbar-title">
-    <img src="http://exciteddelirium.net/wp-content/uploads/2015/12/Wired-Logo.png" (click)="showSelection()"/>
+    <img src="http://exciteddelirium.net/wp-content/uploads/2015/12/Wired-Logo.png"/>
+    <div class="divider"></div>
+    <button class="nav-selection" (click)="showSelection()">{{currentSource}}</button>
   </div>
-  <div class="divider"></div>
   <button class="navbar-btn" (click)="changeViewType()">
     <i class="material-icons">dashboard</i>
   </button>
