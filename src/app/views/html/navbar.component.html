@@ -2,24 +2,15 @@
   <div class="navbar-title">
     <img src="http://exciteddelirium.net/wp-content/uploads/2015/12/Wired-Logo.png"/>
     <div class="divider"></div>
-    <button class="nav-selection" (click)="showSelection()">{{currentSource}}</button>
+    <div class="selection-row">
+      <button id="top" class="selection-button active" (click)="switchSource('https://www.wired.com/feed/rss', $event)">Top Stories</button>
+      <button id="business" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/business/latest/rss', $event)">Business</button>
+      <button id="gear" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/gear/latest/rss', $event)">Gear</button>
+      <button id="science" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/science/latest/rss', $event)">Science</button>
+      <button id="culture" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/culture/latest/rss', $event)">Culture</button>
+    </div>
   </div>
   <button class="navbar-btn" (click)="changeViewType()">
     <i class="material-icons">dashboard</i>
   </button>
-</div>
-
-<div class="selection-container">
-  <div class="selection-list">
-    <div class="selection-item">
-      <h1 (click)="switchSource('https://www.wired.com/feed/rss')">Top Stories</h1>
-    </div>
-    <div class="selection-item">
-      <h1 (click)="switchSource('https://www.wired.com/feed/category/gear/latest/rss')">Gear</h1>
-    </div>
-    <div class="selection-item">
-      <h1 (click)="switchSource('https://www.wired.com/feed/category/culture/latest/rss')">Culture</h1>
-    </div>
-  </div>
-  <button class="nav-close-button" (click)="closeDetail()"><i class="material-icons">close</i></button>
 </div>

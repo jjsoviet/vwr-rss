@@ -13,14 +13,14 @@ declare var $: any;
 export class NavbarComponent implements OnInit {
   //Sample Sources
   source: string;
-  currentSource: string;
   defaultSource: string;
 
   //Constructor
   constructor(private feedViewComponent: FeedViewComponent, private feedDetailComponent: FeedDetailComponent) {
     this.defaultSource = 'https://www.wired.com/feed/rss';
     this.source = this.defaultSource;
-    this.currentSource = "Top Stories";
+
+    setTimeout(() => {this.trigger();}, 200);
   }
 
   //Interface implementation
@@ -34,27 +34,21 @@ export class NavbarComponent implements OnInit {
     this.feedViewComponent.disableView();
   }
 
-  closeDetail() {
-    this.feedViewComponent.enableView();
-    $('.selection-container').removeClass('active');
-  }
-
-  switchSource(newSource: string) {
+  switchSource(newSource: string, event) {
     this.source = newSource;
+    $('.selection-button').removeClass('active');
+    $(`#${event.target.id}`).addClass('active');
 
-    //Bad version, will change
-    if (this.source == 'https://www.wired.com/feed/category/gear/latest/rss')
-      this.currentSource = "Gear";
-    else if (this.source == 'https://www.wired.com/feed/category/culture/latest/rss')
-      this.currentSource = "Culture";
-    else
-      this.currentSource = "Top Stories";
-
-    this.closeDetail();
     this.feedViewComponent.refreshSource(this.source);
+    setTimeout(() => {this.trigger();}, 200);
   }
 
   changeViewType() {
 
+  }
+
+  //Bad workaround
+  trigger() {
+    //Nothing here
   }
 }

@@ -84,51 +84,62 @@
 }
 
 /*Navbar Menu Styles*/
-.selection-container {
-  z-index: 999;
-  position: absolute;
-  background: #222;
-  box-shadow: 0 0 5px rgba(0,0,0.5);
-  top: -100vh;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  -webkit-transform: translate(-50%, 0%);
-  height: auto;
-  width: 80vw;
-  max-width: 1024px;
-  transition: top 400ms ease-in-out;
-  -webkit-transition: top 400ms ease-in-out;
-}
-
-.selection-container.active {
-  top: 0;
-}
-
-.selection-list,
-.selection-item {
+.selection-row {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin: 10px 0;
 }
 
-.selection-item {
-  transition: background 300ms ease;
-  -webkit-transition: background 300ms ease;
-}
-
-.selection-item:hover {
-  cursor: pointer;
-  background: #888;
-}
-
-.selection-item h1 {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 400;
+.selection-row .selection-button {
+  width: 100%;
+  border: 0;
+  border-right: 1px solid #333;
+  padding: 5px;
+  background: #FFF;
+  color: #333;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-size: 1.4em;
+  transition: background 200ms ease, color 200ms ease;
+  -webkit-transition: background 200ms ease, color 200ms ease;
+}
+
+.selection-row .selection-button:first-child {
+  border-left: 1px solid #333;
+}
+.selection-row .selection-button:hover,
+.selection-row .selection-button.active {
+  cursor: pointer;
   color: #FFF;
-  font-size: 4em;
+}
+
+.selection-row #top:hover,
+.selection-row #top.active {
+  background: #FF6961;
+}
+
+.selection-row #business:hover,
+.selection-row #business.active {
+  background: #009F5E;
+}
+
+.selection-row #gear:hover,
+.selection-row #gear.active {
+  background: #1F849F;
+}
+
+.selection-row #science:hover,
+.selection-row #science.active {
+  background: #FFC036;
+}
+
+.selection-row #culture:hover,
+.selection-row #culture.active {
+  background: #41274B;
 }
 
 /*Main View Styles*/
@@ -320,7 +331,6 @@
 }
 
 .detail-feed-container h1,
-.detail-feed-container span,
 .detail-feed-container a {
   margin: 0 40px
 }
@@ -350,8 +360,13 @@
   margin: 20px 0;
 }
 
-.detail-feed-container .content {
-  margin: 10px 40px;
+.detail-feed-container .content-container {
+  width: 100%;
+  padding: 10px 40px;
+  text-align: left;
+}
+
+.detail-feed-container .content-container .content {
   font-size: 1.2em;
 }
 

@@ -5,7 +5,7 @@
       <h1>{{currentFeed.title}}</h1>
       <span class="author-date">{{currentFeed.author}} {{currentFeed.longDate}} ({{currentFeed.shortDate}})</span>
       <div class="content-divider"></div>
-      <div *ngIf="currentFeed.content">
+      <div class="content-container" *ngIf="currentFeed.content">
         <span class="content">{{currentFeed.content}}</span>
       </div>
       <div class="link-container">

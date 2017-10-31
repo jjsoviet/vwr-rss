@@ -28,7 +28,6 @@ export class FeedViewComponent implements OnInit {
 
   //Functions
   refreshSource(source: string) {
-    //this.dto.feeds = [];
     this.dtoService.setSource(source);
     this.getDTO();
   }
