@@ -216,6 +216,8 @@
 
 .feed-info span {
   font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin: 5px 10px 10px 10px;
 }
 
@@ -273,6 +275,11 @@
   -webkit-transition: background 300ms ease;
 }
 
+.nav-close-button i,
+.close-button i {
+  vertical-align: middle;
+}
+
 .nav-close-button {
   background: #222;
 }
@@ -315,15 +322,15 @@
 .detail-feed-container h1,
 .detail-feed-container span,
 .detail-feed-container a {
-  margin: 0 60px
+  margin: 0 40px
 }
 
 .detail-feed-container h1 {
   font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 400;
-  font-size: 3em;
+  font-weight: 700;
+  font-size: 2.5em;
   line-height: 1.2em;
-  margin: 10px 60px;
+  margin: 10px 40px 0 40px;
 }
 
 .detail-feed-container .author-date,
@@ -332,19 +339,19 @@
   font-family: 'Pragati Narrow', sans-serif;
   font-weight: 700;
   font-size: 1.3em;
-  margin: 0 60px;
+  margin: 0 40px;
 }
 
 .detail-feed-container .content-divider {
   align-self: center;
-  width: 90%;
+  width: 95%;
   height: 1px;
-  background: #333;
+  background: #BBB;
   margin: 20px 0;
 }
 
 .detail-feed-container .content {
-  margin: 10px 60px;
+  margin: 10px 40px;
   font-size: 1.2em;
 }
 
@@ -380,7 +387,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 40px 60px;
+  margin: 40px 40px;
 }
 
 .share-container share-button {
