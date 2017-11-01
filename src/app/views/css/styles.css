@@ -85,6 +85,10 @@
 
 /*Navbar Menu Styles*/
 .selection-row {
+  width: 100%;
+}
+
+.selection-row .sources-list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -93,7 +97,11 @@
   margin: 10px 0;
 }
 
-.selection-row .selection-button {
+.selection-row .sources-list div {
+  width: 100%;
+}
+
+.selection-row .sources-list div .selection-button {
   width: 100%;
   border: 0;
   border-right: 1px solid #333;
@@ -108,37 +116,38 @@
   -webkit-transition: background 200ms ease, color 200ms ease;
 }
 
-.selection-row .selection-button:first-child {
+.selection-row .sources-list div .selection-button:first-child {
   border-left: 1px solid #333;
 }
-.selection-row .selection-button:hover,
-.selection-row .selection-button.active {
+
+.selection-row .sources-list div .selection-button:hover,
+.selection-row .sources-list div .selection-button.active {
   cursor: pointer;
   color: #FFF;
 }
 
-.selection-row #top:hover,
-.selection-row #top.active {
+.selection-row .sources-list div [id='Top Stories']:hover,
+.selection-row .sources-list div [id='Top Stories'].active {
   background: #FF6961;
 }
 
-.selection-row #business:hover,
-.selection-row #business.active {
+.selection-row .sources-list div #Business:hover,
+.selection-row .sources-list div #Business.active {
   background: #009F5E;
 }
 
-.selection-row #gear:hover,
-.selection-row #gear.active {
+.selection-row .sources-list div #Gear:hover,
+.selection-row .sources-list div #Gear.active {
   background: #1F849F;
 }
 
-.selection-row #science:hover,
-.selection-row #science.active {
+.selection-row .sources-list div #Science:hover,
+.selection-row .sources-list div #Science.active {
   background: #FFC036;
 }
 
-.selection-row #culture:hover,
-.selection-row #culture.active {
+.selection-row .sources-list div #Culture:hover,
+.selection-row .sources-list div #Culture.active {
   background: #41274B;
 }
 

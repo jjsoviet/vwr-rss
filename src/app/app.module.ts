@@ -8,6 +8,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons';
 import { NavbarComponent } from './views/components/navbar.component';
 import { FeedViewComponent } from './views/components/feed-view.component';
 import { FeedDetailComponent } from './views/components/feed-detail.component';
+import { SourceService } from './services/source.service';
 import { FeedService } from './services/feed.service';
 import { DTOService } from './services/dto.service';
 
@@ -24,6 +25,7 @@ import { DTOService } from './services/dto.service';
     ShareButtonsModule.forRoot()
   ],
   providers: [
+    SourceService,
     FeedService,
     DTOService
   ],

@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Observable';
 import { Feed } from './feed';
 
 export class DTO {

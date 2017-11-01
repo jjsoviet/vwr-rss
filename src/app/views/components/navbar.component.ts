@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedViewComponent } from './feed-view.component';
 import { FeedDetailComponent } from './feed-detail.component';
+import { SourceService } from '../../services/source.service';
+import { Source } from '../../data/source';
 declare var $: any;
 
 @Component({
@@ -12,34 +14,41 @@ declare var $: any;
 
 export class NavbarComponent implements OnInit {
   //Sample Sources
-  source: string;
+  source: Source;
+  sources: Source[];
   defaultSource: string;
 
   //Constructor
-  constructor(private feedViewComponent: FeedViewComponent, private feedDetailComponent: FeedDetailComponent) {
-    this.defaultSource = 'https://www.wired.com/feed/rss';
-    this.source = this.defaultSource;
-
-    setTimeout(() => {this.trigger();}, 200);
+  constructor(private feedViewComponent: FeedViewComponent, private feedDetailComponent: FeedDetailComponent, private sourceService: SourceService) {
+    this.sources = new Array<Source>();
+    this.source = new Source();
   }
 
   //Interface implementation
   ngOnInit() {
-    this.feedViewComponent.setSource(this.source);
+    this.getSources();
+    setTimeout(() => {this.trigger();}, 2000);
   }
 
   //Functions
+  getSources() {
+    this.sourceService.getSources().subscribe((sources) => {
+      this.sources = sources['sources'];
+      this.feedViewComponent.setSource(this.sources[0].url);
+    });
+  }
+
   showSelection() {
     $('.selection-container').addClass('active');
     this.feedViewComponent.disableView();
   }
 
-  switchSource(newSource: string, event) {
+  switchSource(newSource: Source, event) {
     this.source = newSource;
     $('.selection-button').removeClass('active');
     $(`#${event.target.id}`).addClass('active');
 
-    this.feedViewComponent.refreshSource(this.source);
+    this.feedViewComponent.refreshSource(this.source.url);
     setTimeout(() => {this.trigger();}, 200);
   }
 

@@ -3,11 +3,16 @@
     <img src="http://exciteddelirium.net/wp-content/uploads/2015/12/Wired-Logo.png"/>
     <div class="divider"></div>
     <div class="selection-row">
-      <button id="top" class="selection-button active" (click)="switchSource('https://www.wired.com/feed/rss', $event)">Top Stories</button>
+      <!-- <button id="top" class="selection-button active" (click)="switchSource('https://www.wired.com/feed/rss', $event)">Top Stories</button>
       <button id="business" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/business/latest/rss', $event)">Business</button>
       <button id="gear" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/gear/latest/rss', $event)">Gear</button>
       <button id="science" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/science/latest/rss', $event)">Science</button>
-      <button id="culture" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/culture/latest/rss', $event)">Culture</button>
+      <button id="culture" class="selection-button" (click)="switchSource('https://www.wired.com/feed/category/culture/latest/rss', $event)">Culture</button> -->
+      <div *ngIf="sources" class="sources-list">
+        <div *ngFor="let source of sources" (click)="switchSource(source, $event)">
+          <button class="selection-button" id="{{source.title}}">{{source.title}}</button>
+        </div>
+      </div>
     </div>
   </div>
   <button class="navbar-btn" (click)="changeViewType()">
