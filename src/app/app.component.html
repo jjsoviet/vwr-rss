@@ -1,12 +1,18 @@
+<navbar *ngIf="sources" [sources]="sources"></navbar>
+
 <div class="main-container">
-  <div class="rss-container">
-    <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="rss-item">
-      <img class="rss-img" src="{{feed.img}}" />
-      <div class="rss-info">
+  <div class="feed-container">
+    <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item" [style.background-image]="'url(' + feed.img + ')'">
+      <div class="feed-info">
         <h3>{{feed.title}}</h3>
-        <span>{{feed.content}}</span>
-        <a>{{feed.link}}</a>
+        <span>{{feed.author}} {{feed.shortDate}}</span>
       </div>
     </div>
   </div>
 </div>
+
+<feed-detail *ngIf="selectedFeed" [selectedFeed]="selectedFeed"></feed-detail>
+
+<div class="darken-bg"></div>
+
+<ng-template #elseBlock>other content here...</ng-template>

@@ -5,33 +5,34 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
 
 // Components to be declared and used
+import { AppComponent } from './app.component';
 import { NavbarComponent } from './views/components/navbar.component';
-import { FeedViewComponent } from './views/components/feed-view.component';
 import { FeedDetailComponent } from './views/components/feed-detail.component';
 import { SourceService } from './services/source.service';
 import { FeedService } from './services/feed.service';
-import { DTOService } from './services/dto.service';
 
 @NgModule({
+  // Declarations for View Components
   declarations: [
+    AppComponent,
     NavbarComponent,
-    FeedViewComponent,
     FeedDetailComponent
   ],
+  // External Module Imports
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ShareButtonsModule.forRoot()
   ],
+  // Service/Dependency Providers
   providers: [
     SourceService,
-    FeedService,
-    DTOService
+    FeedService
   ],
+  // View Components to be Bootstrapped
   bootstrap: [
-    NavbarComponent,
-    FeedViewComponent
+    AppComponent
   ]
 })
 export class AppModule { }

@@ -1,19 +1,26 @@
 import { Component, Input } from '@angular/core';
-import { FeedViewComponent } from './feed-view.component';
+import { AppComponent } from '../../app.component';
 import { Feed } from '../../data/feed';
 declare var $: any;
 
 @Component({
   selector: 'feed-detail',
   templateUrl: '../html/feed-detail.component.html',
-  styleUrls: ['../css/styles.css']
+  styleUrls: ['../css/styles.css'],
+  providers: [AppComponent]
 })
 
 export class FeedDetailComponent {
   //Properties
-  @Input() currentFeed: Feed;
+  @Input() selectedFeed: Feed;
 
-  constructor (private feedView: FeedViewComponent) {
+  //Constructor
+  constructor (private appComponent: AppComponent) {
+    this.overrideShareStyles();
+  }
+
+  //Functions
+  overrideShareStyles() {
     setTimeout(function() {
       $('.sb-wrapper').css("background", "transparent");
       $('.sb-wrapper').css("border", "0");
@@ -23,8 +30,11 @@ export class FeedDetailComponent {
     }, 0);
   }
 
-  closeDetail(): void {
-    $('.detail-container').removeClass('selected');
-    this.feedView.enableView();
+  closeDetail() {
+    setTimeout(function() {
+      $('.detail-container').removeClass('selected');
+    }, 0);
+    this.selectedFeed = null;
+    this.appComponent.enableView();
   }
 }

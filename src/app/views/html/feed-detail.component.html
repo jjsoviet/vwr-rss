@@ -1,25 +1,21 @@
 <div class="detail-container">
   <button class="close-button" (click)="closeDetail()"><i class="material-icons">close</i></button>
-  <div *ngIf="currentFeed; else elseBlock" class="detail-feed-container">
-      <div class="detail-img" [style.background-image]="'url(' + currentFeed.img + ')'"></div>
-      <h1>{{currentFeed.title}}</h1>
-      <span class="author-date">{{currentFeed.author}} {{currentFeed.longDate}} ({{currentFeed.shortDate}})</span>
+  <div *ngIf="selectedFeed" class="detail-feed-container">
+      <div class="detail-img" [style.background-image]="'url(' + selectedFeed.img + ')'"></div>
+      <h1>{{selectedFeed.title}}</h1>
+      <span class="author-date">{{selectedFeed.author}} {{selectedFeed.longDate}} ({{selectedFeed.shortDate}})</span>
       <div class="content-divider"></div>
-      <div class="content-container" *ngIf="currentFeed.content">
-        <span class="content">{{currentFeed.content}}</span>
+      <div class="content-container" *ngIf="selectedFeed.content">
+        <span class="content">{{selectedFeed.content}}</span>
       </div>
       <div class="link-container">
-        <a href="{{currentFeed.link}}" class="feed-link" target="_blank">Read More ></a>
+        <a href="{{selectedFeed.link}}" class="feed-link" target="_blank">Read More ></a>
         <div class="share-container">
-          <share-button button="facebook" url="{{currentFeed.link}}" title="{{currentFeed.title}}" image="{{currentFeed.image}}" buttonClass="share-button"></share-button>
-          <share-button button="twitter" url="{{currentFeed.link}}" title="{{currentFeed.title}}" image="{{currentFeed.image}}" buttonClass="share-button"></share-button>
-          <share-button button="google" url="{{currentFeed.link}}" title="{{currentFeed.title}}" image="{{currentFeed.image}}" buttonClass="share-button"></share-button>
-          <share-button button="reddit" url="{{currentFeed.link}}" title="{{currentFeed.title}}" image="{{currentFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="facebook" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="twitter" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="google" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
+          <share-button button="reddit" url="{{selectedFeed.link}}" title="{{selectedFeed.title}}" image="{{selectedFeed.image}}" buttonClass="share-button"></share-button>
         </div>
       </div>
   </div>
 </div>
-
-<div class="darken-bg"></div>
-
-<ng-template #elseBlock>other content here...</ng-template>
