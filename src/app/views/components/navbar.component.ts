@@ -13,10 +13,12 @@ declare var $: any;
 export class NavbarComponent {
   //Properties
   @Input() sources: Source[];
+  isGrid: boolean;
 
   //Constructor
   constructor(private appComponent: AppComponent) {
-    setTimeout(() => { this.trigger(); }, 200);
+    this.isGrid = true;
+    setTimeout(() => { this.checkViewType(); }, 200);
   }
 
   //Functions
@@ -26,14 +28,36 @@ export class NavbarComponent {
 
     this.appComponent.refreshSource(newSource.url);
 
-    setTimeout(() => { this.trigger(); }, 200);
+    setTimeout(() => { this.checkViewType(); }, 200);
   }
 
   changeViewType() {
+    if(this.isGrid) {
+      $('.feed-item').removeClass('grid-item');
+      $('.feed-item').addClass('list-item');
+    } else {
+      $('.feed-item').addClass('grid-item');
+      $('.feed-item').removeClass('list-item');
+    }
 
+    $('.feed-item').removeClass('fade-animation');
+
+    setTimeout(() => {
+      $('.feed-item').addClass('fade-animation');
+    }, 0);
+
+    this.isGrid = !this.isGrid;
   }
 
-  trigger() {
-
+  checkViewType() {
+    setTimeout(() => {
+      if(!this.isGrid) {
+        $('.feed-item').removeClass('grid-item');
+        $('.feed-item').addClass('list-item');
+      } else {
+        $('.feed-item').addClass('grid-item');
+        $('.feed-item').removeClass('list-item');
+      }
+    }, 0);
   }
 }
