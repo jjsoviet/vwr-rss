@@ -1,7 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!--Will move to global CSS soon-->
+  <meta charset="utf-8">
+  <title>VWR</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <style>
     body {
       margin: 0;
@@ -14,19 +20,44 @@
     }
   </style>
 
-  <meta charset="utf-8">
-  <title>VWR</title>
-  <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-
   <!--Additional CSS-->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Pragati+Narrow:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
+  <!--JavaScript-->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 </head>
 <body>
   <app-root></app-root>
 </body>
 </html>
+
+<script>
+var scroll_pos = 0;
+var ticking = false;
+
+function checkPosition(pos) {
+  if (pos > 50) {
+    $('.navbar-title').addClass('zoomout');
+  } else {
+    $('.navbar-title').removeClass('zoomout');
+  }
+}
+
+window.addEventListener('scroll', (event) => {
+  scroll_pos = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      checkPosition(scroll_pos);
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+</script>
