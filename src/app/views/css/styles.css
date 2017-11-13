@@ -193,28 +193,35 @@
 }
 
 .feed-item {
-  border: 1px solid #000;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 /*Grid Item*/
 .feed-item.grid-item {
-  display: flex;
+  display: block;
   visibility: visible;
+  overflow: hidden;
   opacity: 1;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
   width: 25%;
   height: 300px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #FFF;
   filter: grayscale(80%);
   -webkit-filter: grayscale(80%);
   transition: filter 400ms ease-in-out;
   -webkit-transition: -webkit-filter 400ms ease-in-out;
   color: #FFF;
+}
+
+.feed-item.grid-item .feed-img {
+  z-index: 996;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFF;
 }
 
 .feed-item.grid-item:hover,
@@ -231,6 +238,10 @@
 }
 
 .feed-item.grid-item .feed-info {
+  z-index: 997;
+  position: relative;
+  top: -300px;
+  left: 0;
   visibility: hidden;
   opacity: 0;
   display: flex;
@@ -238,6 +249,7 @@
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
+  height: auto;
   background: rgba(0,0,0, 0.5);
   transition: visibility 300ms ease-in-out, opacity 400ms ease-in-out;
   -webkit-transition: visibility 300ms ease-in-out, opacity 400ms ease-in-out;
@@ -277,6 +289,15 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
+}
+
+.feed-item.list-item .feed-img {
+  width: 50%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFF;
 }
 
 .feed-item.list-item:hover,

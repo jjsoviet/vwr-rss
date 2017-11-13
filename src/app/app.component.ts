@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   sources: Source[];
   feeds: Feed[];
   selectedFeed: Feed;
+  defaultImage: string;
 
   //Constructor
   constructor(private sourceService: SourceService, private feedService: FeedService) {}
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getSources();
     this.selectedFeed = null;
+    this.defaultImage = 'https://s3.amazonaws.com/freebiesupply/thumbs/2x/wired-logo.png';
   }
 
   //Data Functions

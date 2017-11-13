@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 // Components to be declared and used
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { FeedService } from './services/feed.service';
   // External Module Imports
   imports: [
     BrowserModule,
+    LazyLoadImageModule,
     FormsModule,
     HttpClientModule,
     ShareButtonsModule.forRoot()
