@@ -3,7 +3,7 @@
 <div class="main-container">
   <div class="feed-container">
     <div *ngFor="let feed of feeds" [class.selected]="feed === selectedFeed" (click)="displayFeed(feed)" class="feed-item grid-item fade-animation">
-      <div class="feed-img" [defaultImage]="defaultImage" [lazyLoad]="feed.img"></div>
+      <div class="feed-img" [defaultImage]="defaultImage" [lazyLoad]="feed.thumb"></div>
       <div class="feed-info">
         <h3>{{feed.title}}</h3>
         <span>{{feed.author}} {{feed.shortDate}}</span>

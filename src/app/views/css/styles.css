@@ -135,8 +135,8 @@
   color: #FFF;
 }
 
-.selection-row .sources-list div [id='Top Stories']:hover,
-.selection-row .sources-list div [id='Top Stories'].active {
+.selection-row .sources-list div button[id='Top Stories']:hover,
+.selection-row .sources-list div button[id='Top Stories'].active {
   background: #FF6961;
 }
 
@@ -289,6 +289,9 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
+  border: 0px solid rgba(0,0,0,0);
+  transition: border 300ms ease;
+  -webkit-transition: border 300ms ease;
 }
 
 .feed-item.list-item .feed-img {
@@ -303,6 +306,7 @@
 .feed-item.list-item:hover,
 .feed-item.list-item.selected {
   cursor: pointer;
+  border: 2px solid rgba(0,0,0,0.3);
 }
 
 .feed-item.list-item .feed-info {

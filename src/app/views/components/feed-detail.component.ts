@@ -34,7 +34,6 @@ export class FeedDetailComponent {
     setTimeout(function() {
       $('.detail-container').removeClass('selected');
     }, 0);
-    this.selectedFeed = null;
     this.appComponent.enableView();
   }
 }

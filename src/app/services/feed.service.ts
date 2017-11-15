@@ -53,6 +53,7 @@ export class FeedService {
       currFeed.shortDate = this.formatDate(rawData[i]['created'], false);
       currFeed.author = rawData[i]['creator'];
       currFeed.img = rawData[i]['media']['thumbnail'][0]['url'][0];
+      currFeed.thumb = this.useThumbURL(rawData[i]['media']['thumbnail'][0]['url'][0]);
       currFeed.content = rawData[i]['description'];
       currFeed.link = rawData[i]['link'];
 
@@ -60,6 +61,10 @@ export class FeedService {
     };
 
     return currFeeds;
+  }
+
+  useThumbURL(rawURL: string) {
+    return rawURL.replace('/pass/', '/w_582,c_limit/');
   }
 
   formatDate(rawDate: string, isLong: boolean) {

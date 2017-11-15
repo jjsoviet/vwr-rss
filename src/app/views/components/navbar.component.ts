@@ -18,13 +18,16 @@ export class NavbarComponent {
   //Constructor
   constructor(private appComponent: AppComponent) {
     this.isGrid = true;
-    setTimeout(() => { this.checkViewType(); }, 200);
+    setTimeout(() => {
+      this.checkViewType();
+      $("button[id='Top Stories']").addClass('active');
+     }, 300);
   }
 
   //Functions
   switchSource(newSource: Source, event) {
     $('.selection-button').removeClass('active');
-    $(`#${event.target.id}`).addClass('active');
+    $(`button[id='${event.target.id}']`).addClass('active');
 
     this.appComponent.refreshSource(newSource.url);
 
@@ -35,14 +38,18 @@ export class NavbarComponent {
     if(this.isGrid) {
       $('.feed-item').removeClass('grid-item');
       $('.feed-item').addClass('list-item');
+      $('.material-icons').text('list');
     } else {
       $('.feed-item').addClass('grid-item');
       $('.feed-item').removeClass('list-item');
+      $('.material-icons').text('dashboard');
     }
 
+    $('.navbar-btn').removeClass('fade-animation');
     $('.feed-item').removeClass('fade-animation');
 
     setTimeout(() => {
+      $('.navbar-btn').addClass('fade-animation');
       $('.feed-item').addClass('fade-animation');
     }, 0);
 

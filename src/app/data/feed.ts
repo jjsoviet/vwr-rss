@@ -5,5 +5,6 @@ export class Feed {
   author: string;
   content: string;
   img: string;
+  thumb: string;
   link: string;
 }
