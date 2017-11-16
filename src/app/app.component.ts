@@ -10,7 +10,7 @@ declare var $: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./views/css/styles.css']
+  styleUrls: ['./views/css/styles.css', './views/css/styles-responsive.css']
 })
 
 export class AppComponent implements OnInit {

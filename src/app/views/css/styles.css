@@ -102,12 +102,13 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-flow: wrap;
   width: 100%;
   margin: 10px 0;
 }
 
 .selection-row .sources-list div {
-  width: 100%;
+  width: 25%;
 }
 
 .selection-row .sources-list div .selection-button {
@@ -328,7 +329,7 @@
 }
 
 .feed-item.list-item .feed-info h3 {
-  font-size: 1.6em;
+  font-size: 1.8em;
   line-height: 1.2em;
   margin: 10px 20px;
 }
@@ -384,7 +385,7 @@
   top: 20px;
   right: 20px;
   border: 0;
-  border-radius: 30px;
+  border-radius: 50%;
   background: transparent;
   transition: background 300ms ease;
   -webkit-transition: background 300ms ease;

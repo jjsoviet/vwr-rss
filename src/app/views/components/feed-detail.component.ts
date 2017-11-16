@@ -6,7 +6,7 @@ declare var $: any;
 @Component({
   selector: 'feed-detail',
   templateUrl: '../html/feed-detail.component.html',
-  styleUrls: ['../css/styles.css'],
+  styleUrls: ['../css/styles.css', '../css/styles-responsive.css'],
   providers: [AppComponent]
 })
 

@@ -6,7 +6,7 @@ declare var $: any;
 @Component({
   selector: 'navbar',
   templateUrl: '../html/navbar.component.html',
-  styleUrls: ['../css/styles.css'],
+  styleUrls: ['../css/styles.css', '../css/styles-responsive.css'],
   providers: [AppComponent]
 })
 
