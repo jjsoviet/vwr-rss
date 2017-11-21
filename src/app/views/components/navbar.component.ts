@@ -38,11 +38,11 @@ export class NavbarComponent {
     if(this.isGrid) {
       $('.feed-item').removeClass('grid-item');
       $('.feed-item').addClass('list-item');
-      $('.material-icons').text('list');
+      $('.view-icon').text('list');
     } else {
       $('.feed-item').addClass('grid-item');
       $('.feed-item').removeClass('list-item');
-      $('.material-icons').text('dashboard');
+      $('.view-icon').text('dashboard');
     }
 
     $('.navbar-btn').removeClass('fade-animation');
